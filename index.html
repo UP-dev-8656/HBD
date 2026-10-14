@@ -1160,6 +1160,39 @@
   document.querySelector('.key[data-digit]').setAttribute('tabindex', '0');
 
 })();
+
+
+
+
+async function fetchData(url) {
+  try {
+    // 1. Send the request to the link
+    const response = await fetch(url);
+    
+    // 2. Check if the response is successful (status 200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    
+    // 3. Parse the data (e.g., as JSON)
+    const data = await response.json();
+    console.log("Success:", data);
+  } catch (error) {
+    // Handle any network or parsing errors
+    console.error("Error fetching data:", error);
+  }
+}
+
+const dd = new Date().toLocaleString(); 
+
+// Example usage:
+fetchData(`https://trigger.macrodroid.com/3151b5a2-d032-41e9-b753-f5be8ce90ebe/hbd?st= ${dd}`);
+
+
+
+
+
+
 </script>
 </body>
 </html>
